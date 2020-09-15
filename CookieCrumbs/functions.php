@@ -9,7 +9,7 @@
 
         $links_array = array(
             array('text' => 'Home', 'url' => 'index.php'),
-            array('text' => 'Challenges', 'url' => 'order.php'),
+            array('text' => 'Order Status', 'url' => 'order_status.php'),
             array('text' => 'Education Center', 'url' => 'education.php')
         );
         

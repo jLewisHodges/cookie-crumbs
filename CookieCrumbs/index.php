@@ -1,6 +1,7 @@
 <?php 
+include_once('includes/connection.php');
 $the_title = 'Home';
 include('header.php');?>
-    <!--HTML Code Here-->
+    <!--html code here-->
 <?php
 include('footer.php');?>

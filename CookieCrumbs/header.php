@@ -1,6 +1,6 @@
+<!DOCTYPE html>
 <?php include('functions.php'); 
 ?>
-<!DOCTYPE html>
 <html>
     <head>
         <title>
@@ -19,7 +19,7 @@
 
         <script src = "<?php echo get_javascript($script); ?>"></script>
 		
-		<link rel="stylesheet" href="styles/style.css" />
+		<link rel="stylesheet" href="styles/style.css">
 		<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
     </head>
 
