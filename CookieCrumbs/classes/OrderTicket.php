@@ -3,7 +3,7 @@
     author: Jorden Hodges
     class: OrderTicket
     Description: Read only object for holding information for a current order
-    to be used to display the information accross different interfaces.
+    to be used to display the information across different interfaces.
 */
     include_once('../icludes/connection.php');
     class OrderTicket
@@ -21,6 +21,7 @@
         private $fullfilmentType;
         private $paymentStatus;
         private $estimatedCompletionTime;
+        private $orderStatus;
 
         //constructor
         public function __construct()
