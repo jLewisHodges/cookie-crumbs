@@ -16,10 +16,10 @@
         //only applicable for dine in orders
         private $tableNum;
         //items ordered
-        private $itemList = array();
+        private $menuIteme = array();
         //pickup, server, etc
         private $fullfilmentType;
-        private $paymentStatus;
+        private $isPaid;
         private $estimatedCompletionTime;
         private $orderStatus;
 
