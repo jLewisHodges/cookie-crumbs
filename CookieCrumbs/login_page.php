@@ -1,5 +1,4 @@
 <?php 
-include_once('includes/connection.php');
 $the_title = 'Log In';
 include('header.php');?>
     <form method="post" action="php_scripts/login.php">
