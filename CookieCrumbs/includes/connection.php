@@ -1,9 +1,9 @@
 <?php
     class Connection
     {
-        protected $dbServerName = "localhost";
+        protected $dbServerName = "185.224.138.112";
         protected $dbUserName = "u325576875_JordenHodges";
-        protected $dbPassword = "csci490Team2";
+        protected $dbPassword = "Password1";
         protected $dbName = "u325576875_CookieCrumbs";
         public $conn;
 
