@@ -1,8 +1,10 @@
 <?php
 class MenuItem{
-    private $name;
-    private $price;
-    private $ingredient=array();
+    private $item_id;
+    private $item_name;
+    private $item_price;
+    private $item_description;
+    private $item_picture_name;
 
     //Methods 
 
@@ -21,7 +23,7 @@ class MenuItem{
         return $this->price;
     }
     //setter and getter for ingredients
-    function setIngredients(array $ingredients){
+    function setIngredients($ingredients){
         $this->ingredient = $ingredients;
     }
     function getIngredients(){
