@@ -17,12 +17,10 @@
             $this->isEmployee = $isEmployee;
             $this->isManager = $isManager;
         }
-
         public function __toString()
         {
             echo $this->fName;
         }
-
         public function getUserId()
         {
             return $this->id;

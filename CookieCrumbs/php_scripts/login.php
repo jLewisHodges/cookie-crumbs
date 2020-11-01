@@ -42,6 +42,8 @@ error_reporting(E_ALL);
 include_once('../includes/connection.php');
 include_once('../classes/UserAccount.php');
     $login = new login();
+    $login->execute();
+
 class login
 {
     private $email;
@@ -59,7 +61,6 @@ class login
             $this->password = $_REQUEST["password"];
             $this->password = htmlspecialchars($this->password);
             $this->db = new Connection();
-            $this->execute();
         }
     }
 
@@ -68,6 +69,11 @@ class login
         $this->email = $email;
         $this->password = $password;
         $this->execute();
+        }
+        else
+        {
+            echo "parsing error";
+        }
     }
 
     public function execute()
@@ -77,15 +83,6 @@ class login
 
     private function findAccount()
     {
-        /*$sql = "SELECT email_address, password FROM users WHERE email_address= '". $this->email. "'";
-        if($result = $this->db->conn->query($sql))
-        {
-            $accountInfo = $result -> fetch_assoc();
-            $this->hashed_password = $accountInfo['password'];
-        }
-        else
-            echo "query failed";
-        // Associative array*/
         $sql = "SELECT * FROM users WHERE email_address=?";
         if($stmt = $this->db->conn->prepare($sql))
         {
@@ -117,6 +114,7 @@ class login
             echo "could not make account\n";
             echo mysqli_error($this->db->conn);
         }
+        // Associative array
         $this->validateAccount();
     }
 

@@ -20,7 +20,6 @@
                 die("Connection Failed: " . $this->conn->connect_error);
             } 
         }
-
         public function selectFromPlacedOrders($key, $value)
         {
             $sql = "SELECT * FROM placed_orders WHERE ?=?";

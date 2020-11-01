@@ -2,6 +2,7 @@
 /*
     addUser 
 */
+
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 include_once('../includes/connection.php');
@@ -59,7 +60,6 @@ class addUser
                 echo mysqli_error($db->conn);
             }
         }
-
         mysqli_stmt_close($stmt);
         $db->close();
         $this->login($email, $_REQUEST['password']);
@@ -74,6 +74,8 @@ class addUser
     public function execute()
     {
         $this->createUser();
+    }
+        header("Location: ../welcome.php");
     }
 
 }
