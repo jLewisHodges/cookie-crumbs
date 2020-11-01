@@ -20,5 +20,36 @@
                 die("Connection Failed: " . $this->conn->connect_error);
             } 
         }
+        public function selectFromPlacedOrders($key, $value)
+        {
+            $sql = "SELECT * FROM placed_orders WHERE ?=?";
+            if($stmt = $this->db->conn->prepare($sql))
+            {
+                $stmt->bind_param("ss", $key, $value);
+                if($stmt->execute())
+                {
+                    if(!$result = $stmt->get_result())
+                    {
+                        echo "fail";
+                        if(!$row = $result->fetch_assoc())
+                            echo "could not create assoc array";
+                        else
+                            return $row;
+                    }
+                    else
+                        return $result;
+                    echo "Account found succesfully";
+                }
+                else
+                    echo "query failed";
+            }
+            else
+                echo "statement could not be created";
+        }
+
+        public function close()
+        {
+            $this->conn->close();
+        }
     }
 ?>

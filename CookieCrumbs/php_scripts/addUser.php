@@ -2,12 +2,37 @@
 /*
     addUser 
 */
+
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
 include_once('../includes/connection.php');
+include_once('login.php');
 $addUser = new addUser();
-$addUser->addUserAccount();
 class addUser
 {
-    public function addUserAccount()
+    public function __construct()
+    {
+        if($this->userExists())
+            echo "User already exists!";
+        else
+            $this->execute();
+    }
+    //check if user exists already
+    private function userExists()
+    {
+        $db = new Connection();
+        $sql = "Select * FROM users WHERE email_address='" . $_REQUEST["eaddr"] . "'";
+        if($result = $db->conn->query($sql))
+        {
+            $rows = mysqli_num_rows($result);
+            if($rows >= 1)
+                return true;
+        }
+        return false;
+    }
+
+    //creates user in database
+    private function createUser()
     {
         $db = new Connection();
         $sql = "INSERT INTO users (first_name, last_name, email_address, password) VALUES (?, ?, ?, ?)";
@@ -35,10 +60,23 @@ class addUser
                 echo mysqli_error($db->conn);
             }
         }
-
         mysqli_stmt_close($stmt);
+        $db->close();
+        $this->login($email, $_REQUEST['password']);
+    }
 
+    public function login($email, $password)
+    {
+        $login = new Login();
+        $login->constructer($email, $password);
+    }
+
+    public function execute()
+    {
+        $this->createUser();
+    }
         header("Location: ../welcome.php");
     }
+
 }
 ?>

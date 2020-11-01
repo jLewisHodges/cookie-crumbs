@@ -44,7 +44,6 @@ include_once('../classes/UserAccount.php');
     $login = new login();
     $login->execute();
 
-
 class login
 {
     private $email;
@@ -63,6 +62,14 @@ class login
             $this->password = htmlspecialchars($this->password);
             $this->db = new Connection();
         }
+    }
+
+    public function constructer($email, $password)
+    {
+        $this->email = $email;
+        $this->password = $password;
+        $this->execute();
+        }
         else
         {
             echo "parsing error";
@@ -76,15 +83,37 @@ class login
 
     private function findAccount()
     {
-
-        $sql = "SELECT email_address, password FROM users WHERE email_address= '". $this->email. "'";
-        if($result = $this->db->conn->query($sql))
+        $sql = "SELECT * FROM users WHERE email_address=?";
+        if($stmt = $this->db->conn->prepare($sql))
         {
-            $accountInfo = $result -> fetch_assoc();
-            $this->hashed_password = $accountInfo['password'];
+            $stmt->bind_param("s", $this->email);
+            $email = $_REQUEST["eaddr"];
+            $password = $_REQUEST["password"];
+            if($stmt->execute())
+            {
+                if(!$result = $stmt->get_result())
+                {
+                    echo "fail";
+                }
+                if(!$accountInfo = $result->fetch_assoc())
+                {
+                    echo "could not make associative array";
+                }
+                echo $accountInfo['email_address'];
+                echo $accountInfo['password'];
+                echo $accountInfo['user_id'];
+                echo "Account found succesfully";
+            }
+            else
+            {
+                echo "ERROR: Could not execute query: $sql. ";
+            }
         }
         else
-            echo "query failed";
+        {
+            echo "could not make account\n";
+            echo mysqli_error($this->db->conn);
+        }
         // Associative array
         $this->validateAccount();
     }
@@ -105,9 +134,8 @@ class login
     private function createSession($accountInfo)
     {
         session_start();
-        $userAccount = new UserAccount($accountInfo['first_name'], $accountInfo['last_name'], $accountInfo['email_address']);
+        $userAccount = new UserAccount($accountInfo['user_id'], $accountInfo['first_name'], $accountInfo['last_name'], $accountInfo['email_address'], $accountInfo['isEmployee'], $accountInfo['isManager']);
         $_SESSION['currentAccount'] = serialize($userAccount);
-        header('Location: ../welcome.php');
     }
 }
 
