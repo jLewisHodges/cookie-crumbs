@@ -75,8 +75,6 @@ class addUser
     {
         $this->createUser();
     }
-        header("Location: ../welcome.php");
-    }
-
 }
+header("Location: ../welcome.php");
 ?>
