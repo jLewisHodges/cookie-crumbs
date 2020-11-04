@@ -99,8 +99,8 @@ body{
 input{
 	font-size: 17px;
 	font-family: Raleway;
-	border: 1px solid #f0eae4;
 	padding: 10px;
+	border: none;
 	border-radius: 25px;
 	background-color:#e6ae75;
 }
@@ -115,6 +115,21 @@ input{
 .pickup{
 	height :auto;
 	width: 40%;
+}
+.select-css{
+
+	display: inline-block; width: auto;
+	font-family: Raleway;
+	font-size: 17px;
+	box-sizing: border-box;
+	padding: 10px;
+	border: none;
+	border-radius: 25px;
+	background-image: linear-gradient(to bottom, #e6ae75 0%,#e6ae75 100%);
+
+}
+.select-css::-ms-expand {
+	display: none;
 }
 
 #logEaddr{
