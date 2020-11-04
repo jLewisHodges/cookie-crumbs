@@ -20,6 +20,7 @@
         private $isDelivery;
         private $isPaid;
         private $estimatedCompletionTime;
+        private $totalPrice;
         private $sales_credit;
 
         //constructor
@@ -31,6 +32,9 @@
             $this->tableNum = $tableNum;
             $this->menuItems = $menuItems;
             $this->isDelivery = $isDelivery;
+            $this->isPaid = $isPaid;
+            $this->estimatedCompletionTime = $estimatedCompletionTime;
+            $this->totalPrice = $totalPrice;
             $this->estimatedCompletionTime = $estimatedCompletionTime;
             $this->sales_credit = $sales_credit;
         }

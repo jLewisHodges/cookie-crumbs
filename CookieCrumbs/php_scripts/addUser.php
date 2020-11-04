@@ -62,6 +62,48 @@ class addUser
         }
         mysqli_stmt_close($stmt);
         $db->close();
+
+        $this->addAddress();
+        $this->login($email, $_REQUEST['password']);
+    }
+
+    private function addAddress()
+    {
+        $db = new Connection();
+        $idQuery = $db->conn->query("SELECT user_id FROM users WHERE email_address = '".$_REQUEST['eaddr']."'");
+        $idArr = $idQuery->fetch_assoc();
+        $id= $idArr['user_id'];
+        echo strval($id);
+        $sql = "INSERT INTO addresses (user_id, street_address, street_address_2, city, state, zip) VALUES (?, ?, ?, ?, ?, ?)";
+        if($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            if($stmt = mysqli_prepare($db->conn, $sql))
+            {
+                mysqli_stmt_bind_param($stmt, "dsssss", $id, $address, $apt, $city, $state, $zip);
+                $address = $_REQUEST["address"];
+                $apt = $_REQUEST["apt"];
+                $city = $_REQUEST["city"];
+                $state = $_REQUEST["state"];
+                echo "State is:" .$_REQUEST["state"];
+                $zip = $_REQUEST["zip"];
+                if(mysqli_stmt_execute($stmt))
+                {
+                    echo "Account added succesfully";
+                }
+                else
+                {
+                    echo "ERROR: Could not execute query: $sql. ";
+                }
+            }
+            else
+            {
+                echo "could not make account\n";
+                echo mysqli_error($db->conn);
+            }
+        }
+        mysqli_stmt_close($stmt);
+        $db->close();
+    }
         $this->login($email, $_REQUEST['password']);
     }
 

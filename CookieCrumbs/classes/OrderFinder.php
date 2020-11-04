@@ -3,6 +3,8 @@
     author: Jorden Hodges
     OrderFinder.php - this file simply finds the order that is being searched for and creates a Order Ticket object for it.
 */
+use WaiterDashBoardServices\OrderTicket;
+
 include_once('../includes/connection.php');
 include('OrderTicket.php');
 
@@ -19,11 +21,9 @@ include('OrderTicket.php');
             method getByName
             finds orders with name on the order
         */
-        function getById($id)
+        public function getById($id)
         {
-            $orderArray = array();
-            $this->db->selectFromPlacedOrders("user_id", $id);
-        }
+            $orderArray = $this->db->selectFromPlacedOrders("user_id", $id);
 
         /*
             method getByOrderNumber
@@ -31,8 +31,14 @@ include('OrderTicket.php');
             returns orderTicket object
             returns NULL if not found
         */
-        function getByOrderNumber()
+        public function getByOrderNumber($orderNumber)
         {
+            $orderArray = $this->db->selectFromPlacedOrders("order_number", $orderNumber);
 
+        }
+
+        private function createOrderTicket($orderArray)
+        {
+            return new OrderTicket($orderArray['order_number'], $orderArray['user_id'], $orderArray['date_time'], $orderArray['table_number'], $orderArray['item_list'], $orderArray['isDelivery'],  $orderArray['isPaid'], $orderArray['ETA'], $orderArray['sales_credit']);
         }
     }

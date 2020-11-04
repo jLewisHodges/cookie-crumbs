@@ -7,7 +7,11 @@
         private $id;
         private $isEmployee;
         private $isManager;
-
+        private $address;
+        private $apt;
+        private $zip;
+        private $city;
+        private $state;
         function __construct($id, $fName, $lName, $email, $isEmployee, $isManager)
         {
             $this->id = $id;
@@ -16,6 +20,12 @@
             $this->email = $email;
             $this->isEmployee = $isEmployee;
             $this->isManager = $isManager;
+            $this->address = $address;
+            $this->apt = $apt;
+            $this->city = $city;
+            $this->state = $state;
+            $this->isManager = $isManager;
+            $this->zip = $zip;
         }
         public function __toString()
         {
@@ -58,6 +68,10 @@
         public function setEmail($email)
         {
             $this->email = $email;
+        }
+        public function displayUserInfo()
+        {
+            
         }
     } 
 ?>

@@ -69,13 +69,8 @@ class login
         $this->email = $email;
         $this->password = $password;
         $this->execute();
-        }
-        else
-        {
-            echo "parsing error";
-        }
     }
-
+    
     public function execute()
     {
         $this->findAccount();
@@ -83,59 +78,26 @@ class login
 
     private function findAccount()
     {
-        $sql = "SELECT * FROM users WHERE email_address=?";
-        if($stmt = $this->db->conn->prepare($sql))
-        {
-            $stmt->bind_param("s", $this->email);
-            $email = $_REQUEST["eaddr"];
-            $password = $_REQUEST["password"];
-            if($stmt->execute())
-            {
-                if(!$result = $stmt->get_result())
-                {
-                    echo "fail";
-                }
-                if(!$accountInfo = $result->fetch_assoc())
-                {
-                    echo "could not make associative array";
-                }
-                echo $accountInfo['email_address'];
-                echo $accountInfo['password'];
-                echo $accountInfo['user_id'];
-                echo "Account found succesfully";
-            }
-            else
-            {
-                echo "ERROR: Could not execute query: $sql. ";
-            }
-        }
-        else
-        {
-            echo "could not make account\n";
-            echo mysqli_error($this->db->conn);
-        }
+        $accountInfo = $this->db->getUserInfoByEmail($this->email);
+        $addressInfo = $this->db->getAddressByID($accountInfo['user_id']);
         // Associative array
-        $this->validateAccount();
-    }
-
-    private function validateAccount(){
-        $sql = "SELECT * FROM users WHERE email_address= '". $this->email. "'";
-        if($result = $this->db->conn->query($sql))
-        {
-            if($accountInfo = $result -> fetch_assoc())
-            {
-                $this->createSession($accountInfo);
-            }
-        }
+        $isValid = $this->validateAccount($accountInfo);
+        if($isValid)
+            echo "Password Incorrect";
         else
-            echo "query failed";
+            $this->createSession($accountInfo, $addressInfo);
     }
 
-    private function createSession($accountInfo)
+    private function validateAccount($accountInfo){
+        return password_verify($this->password, $accountInfo['email_address']);
+    }
+
+    private function createSession($accountInfo, $addressInfo)
     {
         session_start();
-        $userAccount = new UserAccount($accountInfo['user_id'], $accountInfo['first_name'], $accountInfo['last_name'], $accountInfo['email_address'], $accountInfo['isEmployee'], $accountInfo['isManager']);
+        $userAccount = new UserAccount($accountInfo['user_id'], $accountInfo['first_name'], $accountInfo['last_name'], $accountInfo['email_address'], $accountInfo['isEmployee'], $accountInfo['isManager'], $addressInfo['street_address'], $addressInfo['street_address_2'], $addressInfo['city'], $addressInfo['state'], $addressInfo['zip']);
         $_SESSION['currentAccount'] = serialize($userAccount);
+        header('location:../welcome.php');
     }
 }
 
