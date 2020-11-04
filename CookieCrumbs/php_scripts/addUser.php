@@ -104,8 +104,6 @@ class addUser
         mysqli_stmt_close($stmt);
         $db->close();
     }
-        $this->login($email, $_REQUEST['password']);
-    }
 
     public function login($email, $password)
     {
