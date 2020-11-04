@@ -24,10 +24,10 @@
         private $sales_credit;
 
         //constructor
-        public function __construct($orderNum, $id, $dateTime, $tableNum, $menuItems, $isDelivery, $isPaid, $estimatedCompletionTime, $totalPrice, $sales_credit)
+        public function __construct($orderNum, $id, $dateTime, $tableNum, $menuItems, $isDelivery, $estimatedCompletionTime, $sales_credit)
         {
             $this->orderNum = $orderNum;
-            $this->id = $id;
+            $this-id = $id;
             $this->dateTime = $dateTime;
             $this->tableNum = $tableNum;
             $this->menuItems = $menuItems;
@@ -35,6 +35,7 @@
             $this->isPaid = $isPaid;
             $this->estimatedCompletionTime = $estimatedCompletionTime;
             $this->totalPrice = $totalPrice;
+            $this->estimatedCompletionTime = $estimatedCompletionTime;
             $this->sales_credit = $sales_credit;
         }
 

@@ -1,6 +1,6 @@
 <?php
 /*
-    addUser 
+    addMenuItem
 */
 include_once('../includes/connection.php');
 $addMenuItem = new addMenuItem();

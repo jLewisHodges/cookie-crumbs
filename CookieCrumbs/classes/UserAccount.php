@@ -12,8 +12,7 @@
         private $zip;
         private $city;
         private $state;
-
-        function __construct($id, $fName, $lName, $email, $isEmployee, $isManager, $address, $apt, $city, $state, $zip)
+        function __construct($id, $fName, $lName, $email, $isEmployee, $isManager)
         {
             $this->id = $id;
             $this->fName = $fName;
@@ -27,7 +26,6 @@
             $this->state = $state;
             $this->isManager = $isManager;
             $this->zip = $zip;
-
         }
         public function __toString()
         {
@@ -71,7 +69,6 @@
         {
             $this->email = $email;
         }
-
         public function displayUserInfo()
         {
             

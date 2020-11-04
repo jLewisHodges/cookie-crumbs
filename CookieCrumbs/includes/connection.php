@@ -6,7 +6,6 @@
         protected $dbPassword = "Password1";
         protected $dbName = "u325576875_CookieCrumbs";
         public $conn;
-        public $PDOConn;
 
         function __construct()
         {
@@ -20,15 +19,6 @@
             {
                 die("Connection Failed: " . $this->conn->connect_error);
             } 
-
-            try{
-                $this->PDOConn = new PDO("mysql:host=$this->dbServerName;dbname=$this->dbName", $this->dbUserName, $this->dbPassword);
-                $this->PDOConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            }
-            catch(PDOException $err){
-                echo $err->getMessage();
-            }
-            
         }
         public function selectFromPlacedOrders($key, $value)
         {
