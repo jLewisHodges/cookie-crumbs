@@ -10,22 +10,32 @@
     {
         private $orderNum;
         //customer name
-        private $name;
-        private $date;
-        private $time;
+        private $id;
+        private $dateTime;
         //only applicable for dine in orders
         private $tableNum;
         //items ordered
-        private $itemList = array();
+        private $menuItems;
         //pickup, server, etc
-        private $fullfilmentType;
-        private $paymentStatus;
+        private $isDelivery;
+        private $isPaid;
         private $estimatedCompletionTime;
-        private $orderStatus;
+        private $totalPrice;
+        private $sales_credit;
 
         //constructor
-        public function __construct()
+        public function __construct($orderNum, $id, $dateTime, $tableNum, $menuItems, $isDelivery, $isPaid, $estimatedCompletionTime, $totalPrice, $sales_credit)
         {
+            $this->orderNum = $orderNum;
+            $this->id = $id;
+            $this->dateTime = $dateTime;
+            $this->tableNum = $tableNum;
+            $this->menuItems = $menuItems;
+            $this->isDelivery = $isDelivery;
+            $this->isPaid = $isPaid;
+            $this->estimatedCompletionTime = $estimatedCompletionTime;
+            $this->totalPrice = $totalPrice;
+            $this->sales_credit = $sales_credit;
         }
 
         //getter methods

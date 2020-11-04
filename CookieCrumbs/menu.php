@@ -1,5 +1,5 @@
 <?php 
-$the_title = 'Home';
+$the_title = 'Menu';
 include('header.php');?>
     
 <?php
