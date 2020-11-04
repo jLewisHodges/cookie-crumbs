@@ -3,7 +3,7 @@
     {
         class MasterTemplate
         {
-            public function navigation($links_array, $class)
+            /*public function navigation($links_array, $class)
             {
                 $nav = '<div class="'.$class.'">';
                 foreach($links_array as $item){
@@ -16,6 +16,18 @@
                 return $nav.'
             </div>
                 ';
+            }*/
+            public function navigation($images_array, $class)
+            {
+                $nav = '<div class="'.$class.'">';
+                foreach($images_array as $item){
+                    $nav .= '<div id="link">
+                        <img src="'.$item['src'].'"a href="'.$item['url'].'">
+                    </div>
+                    ';
+                }
+
+                return $nav;
             }
         }
     }

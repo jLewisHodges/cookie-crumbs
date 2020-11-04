@@ -1,25 +1,30 @@
 .container{
 	display: flex;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .nav a:hover{
 	font-size: 20px;
 }
 .nav{
 	font-size: 18px;
-	background-color: white;
+	background-color:#e6ae75;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-seri;
-    justify-content: space-evenly;
 	width: 100%;
-	border-bottom-width: 10px;
-	border-bottom-style: solid;
-	border-bottom-color: black;
-	border-image: linear-gradient(to bottom, rgb(184, 184, 184) 0%, rgb(202, 202, 202) 12%, rgb(224, 223, 223) 47%, rgb(255, 255, 255) 100%);
 	position: relative;
+}
+
+.nav img{
+	height: 50px;
+	width: auto;
 }
 
 #link{
     vertical-align: text-bottom;
-    line-height: 100px;
+    line-height: 75px;
+}
+#cAccountTitle{
+	margin-bottom: 25px;
+
 }
 
 .controls{
@@ -30,5 +35,99 @@
 	color: black;
 }
 body{
-	background-color:white;
-}             
+	background-color:#f0eae4;
+}
+.content{
+	background-color: #f0eae4;
+  	padding: 40px;
+	width: 100%;
+	min-width: 300px;
+	color: black;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#cAccountButton{
+	width:99.7%;
+}
+
+#fname{
+	width:49.7%;
+	margin-bottom: 25px;
+}
+#lname{
+	width: 49.7%;
+	margin-bottom: 25px;
+}
+#email{
+	width:99.8%;
+	margin-bottom: 25px;
+}
+#password{
+	width: 49.7%;
+	margin-bottom: 25px;
+}
+#cPassword{
+	width:49.7%;
+	margin-bottom: 25px;
+}
+#address{
+	width:99.8%;
+	margin-bottom: 25px;
+}
+#apt{
+	width:99.8%;
+	margin-bottom: 25px;
+}
+#city{
+	width:33%;
+	margin-bottom: 25px;
+}
+#state{
+	width:33%;
+	padding-bottom:12px;
+	padding-top: 14px;
+	margin-bottom: 25px;
+	border-radius: 25px;
+	background-color: #e6ae75;
+}
+#zip{
+	width:33%;
+	margin-bottom: 25px;
+}
+
+
+input{
+	font-size: 17px;
+	font-family: Raleway;
+	border: 1px solid #f0eae4;
+	padding: 10px;
+	border-radius: 25px;
+	background-color:#e6ae75;
+}
+
+.delivery{
+	height: auto;
+	width: 40%;
+}
+.delivery :hover{
+	opacity: .5;
+}
+.pickup{
+	height :auto;
+	width: 40%;
+}
+
+#logEaddr{
+	margin-top: 40px;
+	width: 70%;
+	margin-bottom: 25px;
+}
+#logPass{
+	width: 70%;
+	margin-bottom: 25px;
+}
+#logSubmit{
+	width: 70%;
+	margin-bottom: 25px;
+}
+
