@@ -1,6 +1,7 @@
 <?php
-    include_once("{$_SERVER['DOCUMENT_ROOT']}/CookieCrumbs/classes/MenuItem.php");
-    include_once("{$_SERVER['DOCUMENT_ROOT']}/CookieCrumbs/includes/connection.php");
+    include_once(__DIR__."/../config.php");
+    include_once(SITE_ROOT."/classes/MenuItem.php");
+    include_once(SITE_ROOT."/includes/connection.php");
 
     class MenuServices
     {
