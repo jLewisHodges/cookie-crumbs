@@ -84,6 +84,16 @@
             }
         }
 
+        public function getAllFromTable($table)
+        {
+            $sql = "SELECT * FROM " . $table;
+            if($result = $this->conn->query($sql))
+            {
+                $array = $result->fetch_assoc();
+            }
+            return $array;
+        }
+
         public function getAddressByID($id)
         {
             $sql = "SELECT * FROM addresses WHERE user_id=?";

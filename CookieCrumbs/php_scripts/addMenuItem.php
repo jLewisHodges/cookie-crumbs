@@ -26,7 +26,7 @@ class addMenuItem
                 $item_picture_name = $_POST["item_picture_name"];
                 if(mysqli_stmt_execute($stmt))
                 {
-                    echo "Menu Item added succesfully";
+                    header('Location:../menu_item_confirmation.php');
                 }
                 else
                 {
