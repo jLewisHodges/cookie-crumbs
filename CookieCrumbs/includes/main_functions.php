@@ -21,12 +21,8 @@
             {
                 $nav = '<div class="'.$class.'">';
                 foreach($images_array as $item){
-                    $nav .= '<div id="link">
-                        <img src="'.$item['src'].'"a href="'.$item['url'].'">
-                    </div>
-                    ';
+                    $nav .= '<div id="link"><a href="'.$item['url'].'"><img src="'.$item['src'].'"></a></div>';
                 }
-
                 return $nav;
             }
         }
