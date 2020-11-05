@@ -13,9 +13,7 @@ class addUser
     public function __construct()
     {
         if($this->userExists())
-        {
             header('location:../user_exists.php');
-        }
         else
             $this->execute();
     }
@@ -64,6 +62,7 @@ class addUser
         }
         mysqli_stmt_close($stmt);
         $db->close();
+
         $this->addAddress();
         $this->login($email, $_REQUEST['password']);
     }
@@ -117,4 +116,5 @@ class addUser
         $this->createUser();
     }
 }
+header("Location: ../welcome.php");
 ?>
