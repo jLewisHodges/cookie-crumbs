@@ -1,19 +1,28 @@
 <?php
-class MenuItem{
+class MenuItem implements JsonSerializable{
     private $item_id;
     private $item_name;
     private $item_price;
     private $item_description;
+    private $item_category;
     private $item_picture_name;
 
     //Methods 
-
+    function __construct($item_id,$item_name,$item_price,$item_description,$item_category,$item_picture_name)
+    {
+        $this->item_id = $item_id;
+        $this->item_name = $item_name;
+        $this->item_price = $item_price;
+        $this->item_description = $item_description;
+        $this->item_category = $item_category;
+        $this->item_picture_name = $item_picture_name;
+    }
     
     function setItem_id($id){
         $this->item_id = $id;
     }
     function getItem_id(){
-        return $this->item_id;
+        return (int)$this->item_id;
     }
     //setter and getter for name
     function setItem_name($name){
@@ -36,11 +45,26 @@ class MenuItem{
     function getItem_description(){
         return $this->item_description;
     }
+    function setItem_category($item_category){
+        $this->item_category = $item_category;
+    }
+    function getItem_category(){
+        return $this->item_category;
+    }
     function setItem_picture_name($picture){
         $this->item_picture_name = $picture;
     }
     function getItem_picture_name(){
         return $this->item_picture_name;
+    }
+    public function jsonSerialize()
+    {
+        return array('item_id' => (int)$this->item_id,'item_name' => $this->item_name,'item_price' => (double)$this->item_price,'item_description' => $this->item_description,'item_category' => $this->item_category,'item_picture_name' => $this->item_picture_name);
+    }
+
+    function __toString()
+    {
+        return json_encode($this);
     }
 }
 ?>
