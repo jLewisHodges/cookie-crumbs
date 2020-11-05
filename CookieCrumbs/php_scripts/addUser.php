@@ -14,7 +14,7 @@ class addUser
     {
         if($this->userExists())
         {
-            echo "User already exists!";
+            header('location:../user_exists.php');
         }
         else
             $this->execute();
