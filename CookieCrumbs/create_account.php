@@ -2,17 +2,29 @@
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 $the_title = 'Create New Account';
+$script = "create_account.js";
 include('header.php');
+
+
+
 ?>
 <div class="content">
     <h3 id="cAccountTitle">Create your Cookie Crumbs account</h2>
-    <form method="post" id="cAccountForm" action="php_scripts/addUser.php">
+    <form method="post" id="cAccountForm" onsubmit="return validateForm(event)" action="php_scripts/addUser.php">
         <input type = "text"  placeholder = "First Name" id="fname" name = "fname" required>
         <input type = "text" placeholder = "Last Name" id="lname" name = "lname" required>
-        <input type = "text" placeholder = "Email Address" id="email" name = "eaddr" required>
-        <input type = "text" placeholder = "Password" id="password" name = "password" required>
-        <input type = "text" placeholder = "Confirm Password" id="cPassword" name = "confPassword" required>
+    <div id="emailAddress">
+        <input type = "text" placeholder = "Email Address" onkeyup="validate_email(event)" id="email" name = "eaddr" required>
+        <div id="emailCheck"></div>
+    </div>
+    <div id="pass">
+        <input type = "password" placeholder = "Password" id="password" name = "password" onkeyup="compare_passwords(event)" required>
+        <input type = "password" placeholder = "Confirm Password" id="cPassword" name = "confPassword" onkeyup="compare_passwords(event)" required>
+        <div id="xPic" title="Passwords do not mention"></div>
+    </div>
+    <div id="email">
         <input type = "text" name = "address" id="address" placeholder="Stree Address" required>
+    </div>
         <input type = "text" name = "apt" id="apt" placeholder="Suite, APT, UNIT">
         <input type = "text" name = "city" id="city" placeholder="City" required>
         <select name = "state" id="state" required>
@@ -69,7 +81,7 @@ include('header.php');
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
         </select>
-        <input type = "text" name = "zip" id="city" placeholder="Zip Code" required>
+        <input type = "text" name = "zip" id="zip" placeholder="Zip Code" required>
         <input type = "submit" value="Create Account" id="cAccountButton">
     </form>
 </div>

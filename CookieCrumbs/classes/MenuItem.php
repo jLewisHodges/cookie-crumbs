@@ -8,7 +8,6 @@ class MenuItem implements JsonSerializable{
     private $item_picture_name;
 
     //Methods 
-
     function __construct($item_id, $item_name, $item_price, $item_description, $item_category, $item_picture_name)
     {
         $this->item_id = $item_id;
@@ -24,6 +23,15 @@ class MenuItem implements JsonSerializable{
     }
     function getItem_id(){
         return (int)$this->item_id;
+    }
+    function setItem_category($category)
+    {
+        $this->item_category = $category;
+    }
+
+    function getItem_category()
+    {
+        return $this->item_category;
     }
 
     //setter and getter for name

@@ -192,7 +192,26 @@ div.menuItem
 .menuItem a:hover{
 	color: #e6ae75;
 }
-
+#passCheck{
+	height: 60px;
+	width: auto;
+}
+#pass{
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+}
+#pass,#xPic{
+	display: inline;
+}
+#emailAddress{
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+}
+#emailAddress,#emailCheck{
+	display: inline;
+}
 
 
 
