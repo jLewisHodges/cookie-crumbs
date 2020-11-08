@@ -1,6 +1,6 @@
 <?php
 /*
-    addUser 
+    addMenuItem
 */
 include_once('../includes/connection.php');
 $addMenuItem = new addMenuItem();
@@ -19,11 +19,11 @@ class addMenuItem
             if($stmt = mysqli_prepare($db->conn, $sql))
             {
                 mysqli_stmt_bind_param($stmt, "sssss", $item_name, $item_price, $item_description, $item_category, $item_picture_name);
-                $item_name = $_REQUEST["item_name"];
-                $item_price = $_REQUEST["item_price"];
-                $item_description = $_REQUEST["item_description"];
-                $item_category = $_REQUEST["item_category"];
-                $item_picture_name = $_REQUEST["item_picture_name"];
+                $item_name = $_POST["item_name"];
+                $item_price = $_POST["item_price"];
+                $item_description = $_POST["item_description"];
+                $item_category = $_POST["item_category"];
+                $item_picture_name = $_POST["item_picture_name"];
                 if(mysqli_stmt_execute($stmt))
                 {
                     header('Location:../menu_item_confirmation.php');

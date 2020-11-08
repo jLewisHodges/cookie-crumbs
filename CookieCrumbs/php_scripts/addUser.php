@@ -24,6 +24,7 @@ class addUser
             else
                 $this->execute();
             }
+        }
     }
 
     public function validateInput()
@@ -84,6 +85,7 @@ class addUser
         }
         mysqli_stmt_close($stmt);
         $db->close();
+
         $this->addAddress();
         $this->login($email, $_REQUEST['password']);
     }
@@ -137,4 +139,5 @@ class addUser
         $this->createUser();
     }
 }
+header("Location: ../welcome.php");
 ?>

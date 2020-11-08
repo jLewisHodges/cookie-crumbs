@@ -1,5 +1,5 @@
 <?php
-class MenuItem{
+class MenuItem implements JsonSerializable{
     private $item_id;
     private $item_name;
     private $item_price;
@@ -22,9 +22,8 @@ class MenuItem{
         $this->item_id = $id;
     }
     function getItem_id(){
-        return $this->item_id;
+        return (int)$this->item_id;
     }
-
     function setItem_category($category)
     {
         $this->item_category = $category;
@@ -56,11 +55,26 @@ class MenuItem{
     function getItem_description(){
         return $this->item_description;
     }
+    function setItem_category($item_category){
+        $this->item_category = $item_category;
+    }
+    function getItem_category(){
+        return $this->item_category;
+    }
     function setItem_picture_name($picture){
         $this->item_picture_name = $picture;
     }
     function getItem_picture_name(){
         return $this->item_picture_name;
+    }
+    public function jsonSerialize()
+    {
+        return array('item_id' => (int)$this->item_id,'item_name' => $this->item_name,'item_price' => (double)$this->item_price,'item_description' => $this->item_description,'item_category' => $this->item_category,'item_picture_name' => $this->item_picture_name);
+    }
+
+    function __toString()
+    {
+        return json_encode($this);
     }
 }
 ?>

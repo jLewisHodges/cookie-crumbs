@@ -3,7 +3,6 @@
     author: Jorden Hodges
     OrderFinder.php - this file simply finds the order that is being searched for and creates a Order Ticket object for it.
 */
-
 use WaiterDashBoardServices\OrderTicket;
 
 include_once('../includes/connection.php');
@@ -25,7 +24,6 @@ include('OrderTicket.php');
         public function getById($id)
         {
             $orderArray = $this->db->selectFromPlacedOrders("user_id", $id);
-        }
 
         /*
             method getByOrderNumber
