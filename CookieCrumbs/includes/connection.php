@@ -93,7 +93,7 @@
                 echo mysqli_error($this->db->conn);
             }
         }
-
+        
         public function getAddressByID($id)
         {
             $sql = "SELECT * FROM addresses WHERE user_id=?";

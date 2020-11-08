@@ -46,6 +46,15 @@ body{
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 }
+.contentMenu{
+	background-color: #f0eae4;
+  	padding: 40px;
+	width: 70%;
+	min-width: 300px;
+	color: black;
+	margin: 0 auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
 #cAccountButton{
 	width:99.7%;
 }
@@ -95,6 +104,12 @@ body{
 	margin-bottom: 25px;
 }
 
+@media only screen and (max-width: 100px){
+	.content{
+		width: 60%;
+	}
+
+}
 
 input{
 	font-size: 17px;
@@ -130,4 +145,59 @@ input{
 	width: 70%;
 	margin-bottom: 25px;
 }
+
+#checkmark{
+	height: 50%;
+	width: auto;
+}
+
+div.menuItem
+{
+	border: 2px solid #e6ae75;
+	border-radius: 25px;
+	padding: 20px;
+	margin-bottom: 25px;
+	height: 150px;
+	width: 100%;
+}
+
+.menuItem #column{
+	float: left;
+	text-align: center;
+	margin: 0 auto;
+	width: 33.3%;
+}
+.menuItem #column img{
+	border-radius: 15px;
+	border: 1px solid #f0eae4;
+}
+.menuItem a,a:link,a:active{
+	color: black;
+}
+.menuItem a:hover{
+	color: #e6ae75;
+}
+#passCheck{
+	height: 60px;
+	width: auto;
+}
+#pass{
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+}
+#pass,#xPic{
+	display: inline;
+}
+#emailAddress{
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+}
+#emailAddress,#emailCheck{
+	display: inline;
+}
+
+
+
 

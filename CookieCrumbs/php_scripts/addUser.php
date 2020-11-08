@@ -12,13 +12,33 @@ class addUser
 {
     public function __construct()
     {
-        if($this->userExists())
+        if(!$this->validateInput())
         {
-            echo "User already exists!";
+            header('location:../create_account.php');
         }
-        else
-            $this->execute();
+        else{
+            if($this->userExists())
+            {
+                header('location:../user_exists.php');
+            }
+            else
+                $this->execute();
+            }
     }
+
+    public function validateInput()
+    {
+        $email = $_REQUEST["email"];
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+            return false;
+        $password = $_REQUEST["password"];
+        $confPassword = $_REQUEST["confPassword"];
+        if(!$password == $confPassword)
+        {
+            return false;
+        }
+    }   
+
     //check if user exists already
     private function userExists()
     {
