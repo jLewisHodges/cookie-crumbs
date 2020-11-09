@@ -9,22 +9,22 @@ include('header.php');
         <h2>Add New Menu Item</h2>
     </div>
     <br>
-    <form method="post" action="php_scripts/addMenuItem.php">
+    <form method="post" action="php_scripts/addMenuItem.php" style = "padding:  0px 20px;">
         <label for="item_name">Item Name:</label>
-        <input type = "text" name = "item_name" required>
+        <input type = "text" name = "item_name" required><br><br>
         <label for="item_price">Price:</label>
-        <input type = "number" step = "0.01" name = "item_price" required>
+        <input type = "number" step = "0.01" name = "item_price" required><br><br>
         <label for="item_description">Description:</label>
-        <input type = "text" name = "item_description" required>
-        <label for="item_category">category:</label>
+        <input type = "text" name = "item_description" required><br><br>
+        <label for="item_category" >category:</label>
         <select name = "item_category"  class="select-css">
-            <option value="Appetizer">Appetizer</option>
+            <option value="Appetizer" >Appetizer</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
-        </select>
+        </select><br><br>
         <label for="item_picture_name">Name of file for picture:</label>
-        <input type = "text" name = "item_picture_name" required>
+        <input type = "text" name = "item_picture_name" required><br><br>
         <input type = "submit">
     </form>
 

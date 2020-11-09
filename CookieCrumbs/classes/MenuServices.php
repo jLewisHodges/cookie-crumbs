@@ -1,7 +1,7 @@
 <?php
     include_once(__DIR__."/../config.php");
-    include_once(SITE_ROOT."/classes/MenuItem.php");
     include_once(SITE_ROOT."/includes/connection.php");
+    include_once(SITE_ROOT."/classes/MenuItem.php");
 
     class MenuServices
     {
@@ -14,12 +14,14 @@
             $this->db = new Connection();
             $this->menuItemArray = array();
             $this->innerHTML = "";
+            $this->innerEditHTML = "";
         }
 
         public function execute()
         {
             $this->getMenuItems();
             $this->createHTML();
+            $this->createEditHTML();
         }
 
         //gets all menu items in the database and creates MenuItem object array for them
@@ -41,7 +43,19 @@
             {
                 $this->innerHTML = $this->innerHTML . "<a href=\"#\" onclick=\"addItem(".$item->getItem_id().");\"><div class=\"menuItem\"id=\"menuItem\"".$item->getItem_id()."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$item->getItem_picture_name()."\"></div>\n<div id=\"column\"><h4>".$item->getItem_name()."</h3><p></p>\n<h6>".$item->getItem_description()."</h6></div>\n<div id=\"column\"><h3>$".$item->getItem_price()."</h3></div>\n</div></a>";
             }
+        } 
+        private function createEditHTML()
+        {
+            foreach($this->menuItemArray as $item)
+            {
+                $this->innerEditHTML = $this->innerEditHTML . "<a href=\"#\" onclick=\"addItem(".$item->getItem_id().");\"><div class=\"menuItem\"id=\"menuItem\"".$item->getItem_id()."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$item->getItem_picture_name()."\"></div>\n<div id=\"column\"><h4>".$item->getItem_name()."</h3><p></p>\n<h6>".$item->getItem_description()."</h6></div>\n<div id=\"column\"><h3>$".$item->getItem_price()."</h3><a href=\"edit_item.php?id=".$item->getItem_id()."\"><img src=\"images/edit.png\" style=\"width:20px;height:20px;border-radius: 0px;\"></a><a href=\"create_menu_item.php\"><img src=\"images/delete.png\" style=\"width:20px;height:20px;border-radius: 0px;\"></a></div>\n</div></a>";
+            }
         }  
+
+        public function getEditResult()
+        {
+            return $this->innerEditHTML;
+        }
 
         public function getresult()
         {
