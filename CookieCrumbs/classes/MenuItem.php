@@ -24,15 +24,6 @@ class MenuItem implements JsonSerializable{
     function getItem_id(){
         return (int)$this->item_id;
     }
-    function setItem_category($category)
-    {
-        $this->item_category = $category;
-    }
-
-    function getItem_category()
-    {
-        return $this->item_category;
-    }
 
     //setter and getter for name
     function setItem_name($name){
