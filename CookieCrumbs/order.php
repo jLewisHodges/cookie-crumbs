@@ -9,13 +9,12 @@ include('classes/UserAccount.php');
 include('header.php');
 ?>
 <div class="content">
-    <form class="orderForm" action="">
-    <div class="tab">
+    <div id="orderOption">
         <h2>Delivery or Pickup?</h2>
-        <input type="image" src = "images/delivery-icon.png" class="delivery" oninput="this.className = ''">
-        <input type="image" src = "images/pickup-icon.png" class="pickup" oninput="this.className = ''">
+        <img onclick="setDelivery(true)" src = "images/delivery-icon.png" id="delivery">
+        <img onclick="setDelivery(false)" src = "images/pickup-icon.png" id="pickup">
     </div>
-    <h6>First Name</h6>
+    <div><button id="delivSubmit" onclick="submitOrder()">Submit</button><div>
 </div>
 <?php
 include('footer.php');?>

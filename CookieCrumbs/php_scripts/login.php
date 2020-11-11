@@ -41,6 +41,7 @@ ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 include_once('../includes/connection.php');
 include_once('../classes/UserAccount.php');
+include_once('../classes/Cart.php');
     $login = new login();
     $login->execute();
 
@@ -97,6 +98,7 @@ class login
         session_start();
         $userAccount = new UserAccount($accountInfo['user_id'], $accountInfo['first_name'], $accountInfo['last_name'], $accountInfo['email_address'], $accountInfo['isEmployee'], $accountInfo['isManager'], $addressInfo['street_address'], $addressInfo['street_address_2'], $addressInfo['city'], $addressInfo['state'], $addressInfo['zip']);
         $_SESSION['currentAccount'] = serialize($userAccount);
+        $_SESSION['cart'] = serialize(new Cart());
         header('location:../welcome.php');
     }
 }
