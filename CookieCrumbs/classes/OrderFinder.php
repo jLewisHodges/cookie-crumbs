@@ -24,6 +24,7 @@ include('OrderTicket.php');
         public function getById($id)
         {
             $orderArray = $this->db->selectFromPlacedOrders("user_id", $id);
+        }
 
         /*
             method getByOrderNumber

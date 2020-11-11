@@ -52,6 +52,38 @@
             $this->conn->close();
         }
 
+        public function getMenuItemById($id)
+        {
+            $sql = "SELECT * FROM menu_items WHERE item_id=?";
+            if($stmt = $this->conn->prepare($sql))
+            {
+                $itemId = 0;
+                $stmt->bind_param("s", $itemId);
+                $itemId = $id;
+                if($stmt->execute())
+                {
+                    if(!$result = $stmt->get_result())
+                    {
+                        echo "fail";
+                    }
+                    if(!$itemArray = $result->fetch_assoc())
+                    {
+                        echo "could not make associative array";
+                    }
+                    return $itemArray;
+                }
+                else
+                {
+                    echo "ERROR: Could not execute query: $sql. ";
+                }
+            }
+            else
+            {
+                echo "could not make account\n";
+                echo mysqli_error($this->db->conn);
+            }
+        }
+
         public function getUserInfoByEmail($email)
         {
             $sql = "SELECT * FROM users WHERE email_address=?";
@@ -83,17 +115,6 @@
                 echo mysqli_error($this->db->conn);
             }
         }
-
-        public function getAllFromTable($table)
-        {
-            $sql = "SELECT * FROM " . $table;
-            if($result = $this->conn->query($sql))
-            {
-                $array = $result->fetch_assoc();
-            }
-            return $array;
-        }
-
         public function getAddressByID($id)
         {
             $sql = "SELECT * FROM addresses WHERE user_id=?";

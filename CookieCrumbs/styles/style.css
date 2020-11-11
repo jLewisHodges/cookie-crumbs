@@ -91,6 +91,10 @@ body{
 	width:33%;
 	margin-bottom: 25px;
 }
+#isDelivery{
+	width:99.8%;
+	margin-bottom: 25px;
+}
 #state{
 	width:33%;
 	padding-bottom:12px;
@@ -120,16 +124,47 @@ input{
 	background-color:#e6ae75;
 }
 
-.delivery{
+button{
+	font-size: 17px;
+	font-family: Raleway;
+	padding: 10px;
+	border: none;
+	border-radius: 25px;
+	background-color:#e6ae75;
+	width: 25%;
+}
+#orderOption{
+	text-align: center;
+	width: 60%;
+	display: inline;
+}
+
+#delivery{
 	height: auto;
-	width: 40%;
+	width: 20%;
+	padding: 10px;
+	border-radius: 25px;
+	background-color:#e6ae75;
+	cursor: pointer;
 }
-.delivery :hover{
-	opacity: .5;
+#delivery:hover{
+	border: 3px solid;
 }
-.pickup{
+#pickup:hover{
+	border: 3px solid;
+}
+
+#pickup{
 	height :auto;
-	width: 40%;
+	width: 20%;
+	padding: 10px;
+	border-color: black;
+	border-radius: 25px;
+	background-color:#e6ae75;
+	cursor: pointer;
+}
+#delivSubmit{
+	margin-top: 5%;
 }
 .select-css{
 
@@ -191,6 +226,66 @@ div.menuItem
 }
 .menuItem a:hover{
 	color: #e6ae75;
+}
+#total{
+	border: 2px solid #e6ae75;
+	border-radius: 25px;
+	margin-bottom: 25px;
+	width: 100%;
+	text-align: right;
+}
+#total h3{
+	position: relative;
+	right: 15%;
+}
+#passCheck{
+	height: 60px;
+	width: auto;
+}
+#pass{
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+}
+#pass,#xPic{
+	display: inline;
+}
+#emailAddress{
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+}
+#emailAddress,#emailCheck{
+	display: inline;
+}
+#addToCart, #removeFromCart{
+	height:40px;
+	width: auto;
+}
+#itemQuant{
+	position: relative;
+	top: 5px;
+}
+#itemQuant, #addToCart, #removeFromCart{
+	display: inline;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#cartTitle{
+	text-align: center;
+	padding-bottom: 20px;
+}
+#addMoreToCart{
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#wantAdd, #addMoreCart{
+	height:25px;
+	width: auto;
+	display: inline;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 
