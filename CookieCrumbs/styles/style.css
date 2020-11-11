@@ -227,6 +227,7 @@ div.menuItem
 .menuItem a:hover{
 	color: #e6ae75;
 }
+
 #total{
 	border: 2px solid #e6ae75;
 	border-radius: 25px;
@@ -238,6 +239,7 @@ div.menuItem
 	position: relative;
 	right: 15%;
 }
+
 #passCheck{
 	height: 60px;
 	width: auto;
@@ -287,7 +289,6 @@ div.menuItem
 	white-space: nowrap;
 	overflow: hidden;
 }
-
 
 
 
