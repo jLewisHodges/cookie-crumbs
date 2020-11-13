@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include_once('includes/connection.php');
 require_once('classes/UserAccount.php');
 $the_title = 'Log In';
