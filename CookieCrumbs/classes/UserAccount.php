@@ -12,7 +12,7 @@
         private $zip;
         private $city;
         private $state;
-        function __construct($id, $fName, $lName, $email, $isEmployee, $isManager)
+        function __construct($id, $fName, $lName, $email, $isEmployee, $isManager, $address, $apt, $city, $state, $zip)
         {
             $this->id = $id;
             $this->fName = $fName;
@@ -54,6 +54,26 @@
         public function isManager()
         {
             return $this->isManager;
+        }
+        public function getAddress()
+        {
+            return $this->address;
+        }
+        public function getApt()
+        {
+            return $this->apt;
+        }
+        public function getCity()
+        {
+            return $this->city;
+        }
+        public function getState()
+        {
+            return $this->state;
+        }
+        public function getZip()
+        {
+            return $this->zip;
         }
 
 
