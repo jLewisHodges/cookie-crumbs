@@ -51,13 +51,7 @@
                 $this->innerHTML = $this->innerHTML . "<div class=\"menuItem\"id=\"menuItem\"".$item->getItem_id()."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$item->getItem_picture_name()."\"></div>\n<div id=\"column\"><h4>".$item->getItem_name()."</h3><p></p>\n<h6>".$item->getItem_description()."</h6></div>\n<div id=\"column\"><h3>$".$item->getItem_price()."</h3><a href=\"php_scripts/addToCart.php?id=".$item->getItem_id()."\"><img src=\"images/plus.png\" id =\"addToCart\"></a></div>\n</div>";
             }
         } 
-        private function createEditHTML()
-        {
-            foreach($this->menuItemArray as $item)
-            {
-                $this->innerEditHTML = $this->innerEditHTML . "<a href=\"#\" onclick=\"addItem(".$item->getItem_id().");\"><div class=\"menuItem\"id=\"menuItem\"".$item->getItem_id()."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$item->getItem_picture_name()."\"></div>\n<div id=\"column\"><h4>".$item->getItem_name()."</h3><p></p>\n<h6>".$item->getItem_description()."</h6></div>\n<div id=\"column\"><h3>$".$item->getItem_price()."</h3><a href=\"edit_item.php?id=".$item->getItem_id()."\"><img src=\"images/edit.png\" style=\"width:20px;height:20px;border-radius: 0px;\"></a><a href=\"create_menu_item.php\"><img src=\"images/delete.png\" style=\"width:20px;height:20px;border-radius: 0px;\"></a></div>\n</div></a>";
-            }
-        } 
+
         private function createEditHTML()
         {
             foreach($this->menuItemArray as $item)

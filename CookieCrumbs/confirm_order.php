@@ -1,7 +1,7 @@
 <?php
 $the_title = 'Confirm Order';
 include('header.php');
-include_once(__DIR__."/../config.php");
+//include_once(__DIR__."/../config.php");
 if($_GET["isDelivery"] == "true")
     $orderType="Delivery Order";
 else
