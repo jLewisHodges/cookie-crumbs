@@ -27,7 +27,7 @@
         public function getMenuItemById($id)
         {
             $resultArray = $this->db->getMenuItemById($id);
-            $item = new MenuItem($resultArray['item_id'], $resultArray['item_name'], $resultArray['item_price'], $resultArray['item_description'], $resultArray['item_category'], $resultArray['item_picture_name']);
+            $item = new MenuItem($resultArray['item_id'], $resultArray['item_name'], $resultArray['item_price'], $resultArray['item_description'], $resultArray['item_category'], $resultArray['item_picture_name'], $resultArray['make_time']);
             return $item;
         }
 
@@ -39,7 +39,7 @@
             {
                 while($resultArray = $result->fetch_assoc())
                 {
-                    array_push($this->menuItemArray, new MenuItem($resultArray['item_id'], $resultArray['item_name'], $resultArray['item_price'], $resultArray['item_description'], $resultArray['item_category'], $resultArray['item_picture_name']));
+                    array_push($this->menuItemArray, new MenuItem($resultArray['item_id'], $resultArray['item_name'], $resultArray['item_price'], $resultArray['item_description'], $resultArray['item_category'], $resultArray['item_picture_name'], $resultArray['make_time']));
                 }
             }
         }

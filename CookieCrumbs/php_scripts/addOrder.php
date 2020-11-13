@@ -42,7 +42,7 @@ else
                 mysqli_stmt_bind_param($stmt, "iiiiiid", $userId, $tableNum, $isDelivery, $isPaid, $ETA, $sales_credit, $total);
                 $tableNum = 0;
                 $isPaid = 0;
-                $ETA = 0;
+                $ETA = $this->cart->getMakeTime();
                 $sales_credit = 0;
                 $userId = $this->currentAccount->getUserId();
                 $total = $this->cart->getTotal();
@@ -95,7 +95,6 @@ else
             else
             {
                 header('location:../order_failure.php');
-                echo mysqli_error($this->db->conn);
             }
             mysqli_stmt_close($stmt);
         }
