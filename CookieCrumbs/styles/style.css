@@ -1,8 +1,17 @@
+div.orders{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
 div.orderStub{
+	flex: 1;
+	flex-basis: 0;
+	flex-grow: 0;
+	display: table-cell; 
 	background-color: whitesmoke;
 	margin: 10px 25px;
-	float: left; 
-	width: 20em;
+	min-width: 20em;
+	max-width: 20em;
 	border: 1px solid black;
 }
 p.orderNum{
