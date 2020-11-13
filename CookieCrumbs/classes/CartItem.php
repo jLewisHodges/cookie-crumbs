@@ -1,5 +1,5 @@
 <?php
-    include_once("../config.php");
+    include_once(__DIR__."/../config.php");
     include_once(SITE_ROOT."/classes/MenuItem.php");
     class CartItem
     {

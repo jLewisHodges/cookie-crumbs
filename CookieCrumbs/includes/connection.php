@@ -22,10 +22,42 @@
         }
         public function selectFromPlacedOrders($key, $value)
         {
-            $sql = "SELECT * FROM placed_orders WHERE ?=?";
-            if($stmt = $this->db->conn->prepare($sql))
+            $sql = "SELECT * FROM placed_orders WHERE user_id=?";
+            if($stmt = $this->conn->prepare($sql))
             {
-                $stmt->bind_param("ss", $key, $value);
+                $queryValue = "";
+                $stmt->bind_param("s", $queryValue);
+                $queryValue= $value;
+                if($stmt->execute())
+                {
+                    if(!$result = $stmt->get_result())
+                    {
+                        echo "fail";
+                    }
+                    if(!$itemArray = $result->fetch_assoc())
+                    {
+                        echo "could not make associative array";
+                    }
+                    return $itemArray;
+                }
+                else
+                {
+                    echo "ERROR: Could not execute query: $sql. ";
+                }
+            }
+            else
+            {
+                echo "could not make account\n";
+                echo mysqli_error($this->db->conn);
+            }
+        }
+
+        public function selectOrderItems($orderNumber)
+        {
+            $sql = "SELECT * FROM placed_orders WHERE order_id=?";
+            if($stmt = $this->conn->prepare($sql))
+            {
+                $stmt->bind_param("i", $orderNumber);
                 if($stmt->execute())
                 {
                     if(!$result = $stmt->get_result())

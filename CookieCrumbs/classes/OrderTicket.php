@@ -1,11 +1,12 @@
-<?
+<?php
 /*
     author: Jorden Hodges
     class: OrderTicket
     Description: Read only object for holding information for a current order
     to be used to display the information across different interfaces.
 */
-    include_once('../icludes/connection.php');
+    include_once(__DIR__."/../config.php");
+    include_once(SITE_ROOT."/includes/connection.php");
     class OrderTicket
     {
         private $orderNum;
@@ -24,7 +25,7 @@
         private $sales_credit;
 
         //constructor
-        public function __construct($orderNum, $id, $tableNum, $menuItems, $isDelivery, $estimatedCompletionTime, $sales_credit)
+        public function __construct($orderNum, $id, $tableNum, $menuItems, $isDelivery, $estimatedCompletionTime, $totalPrice, $sales_credit)
         {
             $this->orderNum = $orderNum;
             $this->id = $id;
@@ -32,7 +33,7 @@
             $this->tableNum = $tableNum;
             $this->menuItems = $menuItems;
             $this->isDelivery = $isDelivery;
-            $this->isPaid = $isPaid;
+            $this->isPaid = 0;
             $this->estimatedCompletionTime = $estimatedCompletionTime;
             $this->totalPrice = $totalPrice;
             $this->sales_credit = $sales_credit;
@@ -44,6 +45,17 @@
             if(property_exists($this, $name))
                 return $this->$name;
         }
+
+        public function __toString()
+        {
+            return $this->orderNum;
+        }
+
+        public function getHTML()
+        {
+
+        }
+
     } 
 
 

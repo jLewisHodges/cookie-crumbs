@@ -1,5 +1,5 @@
 <?php
-include_once("../config.php");
+include_once(__DIR__."/../config.php");
 include_once(SITE_ROOT."/classes/MenuItem.php");
 include_once(SITE_ROOT."/classes/CartItem.php");
 
@@ -12,14 +12,6 @@ include_once(SITE_ROOT."/classes/CartItem.php");
             {
                 $this->itemList = array();
                 $this->innerHTML = "";
-            }
-
-            public function getItems()
-            {
-                foreach($this->itemList as $item)
-                {
-                    
-                }
             }
 
             public function getHTML()
@@ -36,9 +28,20 @@ include_once(SITE_ROOT."/classes/CartItem.php");
                 $total = 0;
                 foreach($this->itemList as $item)
                 {
-                    $total += $item->getMenuItem()->getItem_price();
+                    $total += ($item->getQuantity()*$item->getMenuItem()->getItem_price());
                 }
                 return $total;
+            }
+
+            public function getMakeTime()
+            {
+                $maxTime = 0;
+                foreach($this->itemList as $item)
+                {
+                    if($item->getMenuItem()->getMake_time() > $maxTime)
+                        $maxTime = $item->getMenuItem()->getMake_time();
+                }
+                return $maxTime;
             }
 
             public function getConfHTML()
