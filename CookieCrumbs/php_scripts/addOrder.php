@@ -8,7 +8,10 @@ include_once("../classes/Cart.php");
 include_once("../classes/CartItem.php");
 include_once("../classes/MenuItem.php");
 $addOrder = new addOrder();
-$addOrder->execute();
+if(empty(unserialize($_SESSION['cart'])->getItemList()))
+    header('location:../order_failure.php');
+else
+    $addOrder->execute();
     class addOrder
     {
         public $currentAccount;
@@ -19,6 +22,16 @@ $addOrder->execute();
             $this->currentAccount = unserialize($_SESSION['currentAccount']);
             $this->cart = unserialize($_SESSION['cart']);
             $this->db = new Connection();
+        }
+
+        private function confirmationPage()
+        {
+            header('location: ../order_recieved.php');
+        }
+
+        private function clearCart()
+        {
+            $_SESSION['cart'] = serialize(new Cart());
         }
 
         private function addToDb()
@@ -43,12 +56,12 @@ $addOrder->execute();
                 }
                 else
                 {
-                    echo "ERROR: Could not execute query: $sql. ";
+                    header('location:../order_failure.php');
                 }
             }
             else
             {
-                echo "could not make account\n";
+                header('location:../order_failure.php');
                 echo mysqli_error($this->db->conn);
             }
             mysqli_stmt_close($stmt);
@@ -59,28 +72,29 @@ $addOrder->execute();
             $idQuery = $this->db->conn->query("SELECT order_id FROM placed_orders WHERE user_id = '".$this->currentAccount->getUserId()."' ORDER BY date_time DESC");
             $idArr = $idQuery->fetch_assoc();
             $id= $idArr['order_id'];
-            $sql = "INSERT INTO order_items (order_id, item_id) VALUES (?, ?)";
+            $sql = "INSERT INTO order_items (order_id, item_id, quantity) VALUES (?, ?, ?)";
             if($stmt = mysqli_prepare($this->db->conn, $sql))
             {
-                mysqli_stmt_bind_param($stmt, "ii", $orderId, $itemId);
+                mysqli_stmt_bind_param($stmt, "iii", $orderId, $itemId, $quantity);
                 $orderId = $id;
                 $itemList = $this->cart->getItemList();
                 foreach($itemList as $item)
                 {
                     $itemId = $item->getMenuItem()->getItem_id();
+                    $quantity = $item->getQuantity();
                     if(mysqli_stmt_execute($stmt))
                     {
                         echo "Item added succesfully";
                     }
                     else
                     {
-                        echo "ERROR: Could not execute query: $sql. ";
+                        header('location:../order_failure.php');
                     }
                 }
             }
             else
             {
-                echo "could not make account\n";
+                header('location:../order_failure.php');
                 echo mysqli_error($this->db->conn);
             }
             mysqli_stmt_close($stmt);
@@ -89,6 +103,8 @@ $addOrder->execute();
         {
             $this->addToDb();
             $this->addItemsToDb();
+            $this->clearCart();
+            $this->confirmationPage();
         }
     }
 ?>  

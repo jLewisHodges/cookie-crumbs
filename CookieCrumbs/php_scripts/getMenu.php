@@ -6,6 +6,7 @@ totalSales - sums all sales in the database and returns the value
 returns the value if total > 0
 else returns -1
 */
+include_once(__DIR__."/../config.php");
 include_once('../includes/connection.php');
 include("../classes/MenuItem.php");
 
