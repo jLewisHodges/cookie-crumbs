@@ -1,3 +1,40 @@
+div#orders{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+div.orderStub{
+	flex: 1;
+	flex-basis: 0;
+	display: table-cell; 
+	background-color: whitesmoke;
+	margin: 10px 25px;
+	min-width: 20em;
+	max-width: 20em;
+	border: 1px solid black;
+}
+p.orderNum{
+	text-align: center;
+	height: 1.2em;
+	font-size: 36px;
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+p.orderName{
+	text-align: center;
+	height: 1.2em;
+	font-size: 24px;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+p.orderMethod{
+	text-align: center;
+	height: 1.2em;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+ul.orderItems{
+	list-style-type: circle;
+}
 .container{
 	display: flex;
 	font-family: Arial, Helvetica, sans-serif;
@@ -306,7 +343,6 @@ div.menuItem
 	white-space: nowrap;
 	overflow: hidden;
 }
-
 
 
 
