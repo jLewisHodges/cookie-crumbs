@@ -1,7 +1,7 @@
 <?php 
 $the_title = 'Cart';
 include('header.php');
-include_once(__DIR__."/../config.php");
+include_once("config.php");
 ?>
 <div class="contentMenu">
     <h3 id="cartTitle"> Your Current Cart </h3>

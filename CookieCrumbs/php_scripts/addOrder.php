@@ -56,14 +56,12 @@ else
                 }
                 else
                 {
-                    //header('location:../order_failure.php');
-                    echo "failed adding items";
-                    echo mysqli_error($this->db->conn);
+                    header('location:../order_failure.php');
                 }
             }
             else
             {
-                //header('location:../order_failure.php');
+                header('location:../order_failure.php');
                 echo mysqli_error($this->db->conn);
             }
             mysqli_stmt_close($stmt);
@@ -90,15 +88,13 @@ else
                     }
                     else
                     {
-                        //header('location:../order_failure.php');
-                        echo mysqli_error($this->db->conn);
+                        header('location:../order_failure.php');
                     }
                 }
             }
             else
             {
-                //header('location:../order_failure.php');
-                echo mysqli_error($this->db->conn);
+                header('location:../order_failure.php');
             }
             mysqli_stmt_close($stmt);
         }
@@ -107,6 +103,7 @@ else
             $this->addToDb();
             $this->addItemsToDb();
             $this->clearCart();
+            $this->confirmationPage();
         }
     }
 ?>  

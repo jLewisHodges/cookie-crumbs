@@ -1,6 +1,8 @@
 <?php 
 $the_title = 'Confirm Your Information';
 include('header.php');
+if(empty($cart->getItemList()))
+    header("location: view_cart.php");
 ?>
 <div class="content">
 <div class="contentMenu">
