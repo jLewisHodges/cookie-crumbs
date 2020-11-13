@@ -18,12 +18,10 @@ class addUser
         }
         else{
             if($this->userExists())
-            {
                 header('location:../user_exists.php');
-            }
             else
                 $this->execute();
-            }
+        }
     }
 
     public function validateInput()

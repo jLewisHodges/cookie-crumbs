@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<?php include('functions.php'); 
+<?php 
+session_start();
+include_once("config.php");
+include_once(SITE_ROOT."/classes/UserAccount.php");
+include_once(SITE_ROOT."/classes/Cart.php");
+$cart = unserialize($_SESSION['cart']);
+$currentAccount = unserialize($_SESSION['currentAccount']);
+include('functions.php'); 
 ?>
 <html>
     <head>
