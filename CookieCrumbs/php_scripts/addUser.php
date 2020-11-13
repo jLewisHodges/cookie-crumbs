@@ -24,7 +24,7 @@ class addUser
             else
                 $this->execute();
             }
-        }
+    }
 
     public function validateInput()
     {
