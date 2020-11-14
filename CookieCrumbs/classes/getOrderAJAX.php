@@ -8,7 +8,7 @@ include_once(SITE_ROOT."/includes/connection.php");
             $order_id="";
             $sql = "SELECT users.first_name, placed_orders.order_id, placed_orders.table_number, placed_orders.isDelivery FROM placed_orders JOIN users ON placed_orders.user_id = users.user_id";
 
-            $sql2 = "SELECT menu_items.item_name FROM menu_items JOIN order_items on menu_items.item_id = order_items.item_id WHERE order_items.order_id = ?";
+            $sql2 = "SELECT menu_items.item_name, order_items.quantity FROM menu_items JOIN order_items on menu_items.item_id = order_items.item_id WHERE order_items.order_id = ?";
             $stmt = $db->conn->prepare($sql2);
             $stmt->bind_param("s",$order_id);
 
@@ -34,7 +34,9 @@ include_once(SITE_ROOT."/includes/connection.php");
                     $stmt->execute();
                     $item_result = $stmt->get_result();
                     while($item_resultArray = $item_result->fetch_assoc()){
-                        $innerHTML = $innerHTML.'<li>'.$item_resultArray['item_name'].'</li>';
+                        for($i = 0; $i<$item_resultArray['quantity']; $i++){
+                            $innerHTML = $innerHTML.'<li>'.$item_resultArray['item_name'].'</li>';
+                        }
                     }
                     $innerHTML = $innerHTML.'</ul></div>';
                 }
