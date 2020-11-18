@@ -51,6 +51,7 @@
                 $this->innerHTML = $this->innerHTML . "<div class=\"menuItem\"id=\"menuItem\"".$item->getItem_id()."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$item->getItem_picture_name()."\"></div>\n<div id=\"column\"><h4>".$item->getItem_name()."</h3><p></p>\n<h6>".$item->getItem_description()."</h6></div>\n<div id=\"column\"><h3>$".$item->getItem_price()."</h3><a href=\"php_scripts/addToCart.php?id=".$item->getItem_id()."\"><img src=\"images/plus.png\" id =\"addToCart\"></a></div>\n</div>";
             }
         } 
+      
         private function createEditHTML()
         {
             foreach($this->menuItemArray as $item)

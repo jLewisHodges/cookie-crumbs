@@ -10,7 +10,6 @@ include_once(SITE_ROOT."/classes/OrderTicket.php");
 include_once(SITE_ROOT."/classes/MenuItem.php");
 include_once(SITE_ROOT."/classes/Cart.php");
 
-
     class OrderFinder
     {
         private $db;

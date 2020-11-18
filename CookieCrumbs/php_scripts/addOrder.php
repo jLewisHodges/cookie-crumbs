@@ -98,7 +98,6 @@ else
             else
             {
                 header('location:../order_failure.php');
-                echo mysqli_error($this->db->conn);
             }
             mysqli_stmt_close($stmt);
         }
