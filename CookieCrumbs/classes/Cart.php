@@ -33,6 +33,17 @@ include_once(SITE_ROOT."/classes/CartItem.php");
                 return $total;
             }
 
+            public function getMakeTime()
+            {
+                $maxTime = 0;
+                foreach($this->itemList as $item)
+                {
+                    if($item->getMenuItem()->getMake_time() > $maxTime)
+                        $maxTime = $item->getMenuItem()->getMake_time();
+                }
+                return $maxTime;
+            }
+
             public function getConfHTML()
             {
                 foreach($this->itemList as $item)

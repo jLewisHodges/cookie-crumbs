@@ -40,13 +40,13 @@ else
             if($stmt = mysqli_prepare($this->db->conn, $sql))
             {
                 mysqli_stmt_bind_param($stmt, "iiiiiid", $userId, $tableNum, $isDelivery, $isPaid, $ETA, $sales_credit, $total);
-                $tableNum = 0;
+                $tableNum = $_GET['tableNum'];
                 $isPaid = 0;
-                $ETA = 0;
+                $ETA = $this->cart->getMakeTime();
                 $sales_credit = 0;
                 $userId = $this->currentAccount->getUserId();
                 $total = $this->cart->getTotal();
-                if($_GET["isDelivery"])
+                if($_GET["isDelivery"] == "true")
                     $isDelivery=1;
                 else
                     $isDelivery=0;
@@ -57,6 +57,8 @@ else
                 else
                 {
                     header('location:../order_failure.php');
+                    echo "failed adding items";
+                    echo mysqli_error($this->db->conn);
                 }
             }
             else
@@ -89,6 +91,7 @@ else
                     else
                     {
                         header('location:../order_failure.php');
+                        echo mysqli_error($this->db->conn);
                     }
                 }
             }
