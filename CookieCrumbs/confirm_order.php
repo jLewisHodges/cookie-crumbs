@@ -1,11 +1,13 @@
 <?php
 $the_title = 'Confirm Order';
 include('header.php');
-//include_once(__DIR__."/../config.php");
+include_once(__DIR__."/../config.php");
 if($_GET["isDelivery"] == "true")
     $orderType="Delivery Order";
 else
     $orderType="Pickup Order";
+
+$tableNumber = $_GET["tableNum"];
 ?>
 <div class="contentMenu">
     <h3 id="cartTitle"> Confirm Your Order </h3>
@@ -31,9 +33,10 @@ else
     <input type = "text" name = "state" id="state" value="'.$currentAccount->getState().'" required>
     <input type = "text" name = "zip" id="zip" value="'.$currentAccount->getZip().'" required>
     <input type = "text" name = "isDelivery" id="isDelivery" value="'.$orderType.'">
+    <input type = "text" name = "tableNumber" id="tableNumField" value="Table #'.$tableNumber.'">
     </fieldset>
 </form>
-<a href="php_scripts/addOrder.php?isDelivery='.$_GET['isDelivery'].'"><button>Submit</button></a>';
+<a href="php_scripts/addOrder.php?isDelivery='.$_GET['isDelivery']."&tableNum=".$_GET['tableNum'].'"><button>Submit</button></a>';
     ?>
 </div>
 </div>

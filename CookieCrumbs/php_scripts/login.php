@@ -2,46 +2,12 @@
 /*
     addUser 
 */
-/*$sql = "SELECT * FROM users WHERE email_address='?'";
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    if($stmt = $conn->prepare($sql))
-    {
-        $stmt->bind_param("s", $email);
-        $email = $_REQUEST["eaddr"];
-        echo $email;
-        $password = $_REQUEST["password"];
-        echo $password;
-        if($stmt->execute())
-        {
-            if(!$result = $stmt->get_result())
-            {
-                echo "fail";
-            }
-            if(!$accountInfo = $result->fetch_all(MYSQLI_ASSOC))
-            {
-                echo "could not make associative array";
-            }
-            echo $accountInfo['email_address'];
-            echo $accountInfo['password'];
-            echo "Account found succesfully";
-        }
-        else
-        {
-            echo "ERROR: Could not execute query: $sql. ";
-        }
-    }
-    else
-    {
-        echo "could not make account\n";
-        echo mysqli_error($conn);
-    }
-}*/
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 include_once('../includes/connection.php');
 include_once('../classes/UserAccount.php');
 include_once('../classes/Cart.php');
+include_once('../classes/AccountInfo.php');
     $login = new login();
     $login->execute();
 
@@ -99,6 +65,22 @@ class login
         $userAccount = new UserAccount($accountInfo['user_id'], $accountInfo['first_name'], $accountInfo['last_name'], $accountInfo['email_address'], $accountInfo['isEmployee'], $accountInfo['isManager'], $addressInfo['street_address'], $addressInfo['street_address_2'], $addressInfo['city'], $addressInfo['state'], $addressInfo['zip']);
         $_SESSION['currentAccount'] = serialize($userAccount);
         $_SESSION['cart'] = serialize(new Cart());
+        $accountInformation = new AccountInfo('<form id="cAccountForm">
+        <fieldset disabled="disabled">
+        <input type = "text"  value = "'.$userAccount->getFirstName().'" id="fname" name = "fname" required>
+        <input type = "text" value = "'.$userAccount->getLastName().'" id="lname" name = "lname" required>
+        <div id="emailAddress">
+        <input type = "text" value = "'.$userAccount->getEmail().'" id="email" name = "eaddr" required>
+        <div id="emailCheck"></div>
+        </div>
+        <input type = "text" name = "address" id="address" value="'.$userAccount->getAddress().'" required>
+        <input type = "text" name = "apt" id="apt" value="'.$userAccount->getApt().'">
+        <input type = "text" name = "city" id="city" value="'.$userAccount->getCity().'" required>
+        <input type = "text" name = "state" id="state" value="'.$userAccount->getState().'" required>
+        <input type = "text" name = "zip" id="zip" value="'.$userAccount->getZip().'" required>
+        </fieldset>
+        </form>');
+        $_SESSION['accountInformation'] = serialize($accountInformation);
         header('location:../welcome.php');
     }
 }

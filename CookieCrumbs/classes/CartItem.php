@@ -22,6 +22,11 @@
             $this->quantity++;
         }
 
+        public function setQuantity($quantity)
+        {
+            $this->quantity = $quantity;
+        }
+
         public function getMenuItem()
         {
             return $this->menuItem;
