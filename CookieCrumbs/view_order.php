@@ -6,15 +6,17 @@
     include_once("config.php");
     include_once('classes/OrderFinder.php');
     include_once('classes/Orders.php');
+    include_once('classes/OrderTicket.php');
 
     $finder = new OrderFinder();
-    $orders = new Orders();
-    $orders->setOrderList($finder->findAllOrdersByUserId($currentAccount->getUserId()));
+    $order=$finder->getByOrderNumber($_GET['orderNum']);
     ?>
+    <div class="content">
     <div class="contentMenu">
-        <h3 id="title">Your Order History</h3>
-        <?php echo $orders->getSummaryHTML(); ?>
+        <h3 id="title">Order Summary for Order Number <?php echo $order->__get("orderNum");?></h3>
+        <?php echo $order->getFullHTML(); ?>
     </div>
+</div>
     <?php
     include('footer.php');
 ?>

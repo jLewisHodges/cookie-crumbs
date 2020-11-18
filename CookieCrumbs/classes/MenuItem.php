@@ -6,9 +6,10 @@ class MenuItem implements JsonSerializable{
     private $item_description;
     private $item_category;
     private $item_picture_name;
+    private $make_time;
 
     //Methods 
-    function __construct($item_id, $item_name, $item_price, $item_description, $item_category, $item_picture_name)
+    function __construct($item_id, $item_name, $item_price, $item_description, $item_category, $item_picture_name, $make_time)
     {
         $this->item_id = $item_id;
         $this->item_name = $item_name;
@@ -16,6 +17,8 @@ class MenuItem implements JsonSerializable{
         $this->item_description = $item_description;
         $this->item_category = $item_category;
         $this->item_picture_name = $item_picture_name;
+        $this->make_time = $make_time;
+
     }
     
     function setItem_id($id){
@@ -57,6 +60,12 @@ class MenuItem implements JsonSerializable{
     }
     function getItem_picture_name(){
         return $this->item_picture_name;
+    }
+    function getMake_time(){
+        return $this->make_time;
+    }
+    function setMake_time($makeTime){
+        $this->make_time = $makeTime;
     }
     public function jsonSerialize()
     {
