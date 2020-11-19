@@ -1,6 +1,2 @@
 <?php 
-$the_title = 'Home';
-include('header.php');?>
-    
-<?php
-include('footer.php');?>
+header('location: login_page.php');?>
