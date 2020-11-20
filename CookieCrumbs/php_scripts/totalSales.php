@@ -5,9 +5,11 @@ totalSales - sums all sales in the database and returns the value
 returns the value if total > 0
 else returns -1
 */
-include_once('../includes/connection.php');
+include_once(__DIR__."/../config.php");
+include_once(SITE_ROOT."/includes/connection.php");
 class totalSales
 {
+    public $sales;
     public function __construct()
     {
         $this->getTotalSales();
@@ -20,7 +22,7 @@ class totalSales
         $result = $db->conn->query($sql);
         $row = $result->fetch_assoc();
         if($row['total'] > 0){
-            return $row['total'];
+            $this->sales = $row['total'];
         }
         else{
             return -1;
@@ -28,6 +30,10 @@ class totalSales
         
         
         $db->conn->close();
+    }
+
+    public function getSales(){
+        return $this->sales;
     }
 
 }

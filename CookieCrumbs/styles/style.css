@@ -343,6 +343,18 @@ div.menuItem
 	white-space: nowrap;
 	overflow: hidden;
 }
+.centered{
+	display: flex;
+	justify-content: center;
+}
+.managerDashButton{
+	height: 75px;
+	width: 75%;
+	font-family: Raleway;
+	font-size: 36px;
 
+}
 
-
+#addMenuItem{
+	height: 75px;
+}
