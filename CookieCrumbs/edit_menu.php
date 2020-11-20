@@ -10,6 +10,8 @@ $menuServices->execute();
 ?>
 <div class="contentMenu">
     <?php echo ($menuServices->getEditResult());?>
+    <a href="create_menu_item.php" class="centered"><img src="images/plus.png" id ="addMenuItem"></a>
 </div>
+<div style="height: 25px;"></div>
 <?php
 include('footer.php');?>

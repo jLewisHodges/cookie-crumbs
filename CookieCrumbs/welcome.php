@@ -1,6 +1,4 @@
-<?php
-ini_set('display_errors', 'on');
-error_reporting(E_ALL); 
+<?php 
 include_once('includes/connection.php');
 require_once('classes/UserAccount.php');
 $the_title = 'Log In';

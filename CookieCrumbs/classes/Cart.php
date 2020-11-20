@@ -70,20 +70,20 @@ include_once(SITE_ROOT."/classes/CartItem.php");
             }
             public function removeItem($menuItem)
             {
-                for($i=0; $i<sizeof($this->itemList); $i++)
+                foreach($this->itemList as $item)
                 {
-                    echo $this->itemList[$i]->getMenuItem()->getItem_id();
-                    if($this->itemList[$i]->getMenuItem()->getItem_id() == $menuItem->getItem_id())
+                    echo $item->getMenuItem()->getItem_id();
+                    if($item->getMenuItem()->getItem_id() == $menuItem->getItem_id())
                     {
                         
-                        if($this->itemList[$i]->getQuantity() == 1)
+                        if($item->getQuantity() == 1)
                         {
-                            unset($this->itemList[$i]);
+                            unset($item);
                             echo "unsetting item";
                         }
                         else
                         {
-                            $this->itemList[$i]->subQuantity();
+                            $item->subQuantity();
                             echo "removing item";
                         }
                     }

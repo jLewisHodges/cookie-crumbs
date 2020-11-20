@@ -14,7 +14,7 @@ function changeHTML()
         document.getElementById("tableNumDiv").innerHTML = '<form><input type="text" id="tableNum" placeholder="Do you have a table #?"></form>';
     }
     else
-        document.getElementById("tableNumDiv").innerHTML = '';
+        document.getElementById("tableNumDiv").innerHTML = '<input id="tableNum" value="0" type="hidden">';
 }
 
 function changeJS()
@@ -40,7 +40,9 @@ function submitOrder()
         var tableNum = document.getElementById("tableNum").value;
         window.location.replace("confirm_order.php?isDelivery=".concat(isDelivery).concat("&tableNum=".concat(tableNum)));
     }
-    else
-        window.location.replace("confirm_order.php?isDelivery=".concat(isDelivery));
+    else{
+        var tableNum = document.getElementById("tableNum").value;
+        window.location.replace("confirm_order.php?isDelivery=".concat(isDelivery).concat("&tableNum=".concat(tableNum)));
+    }
 }
 

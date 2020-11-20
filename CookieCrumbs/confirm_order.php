@@ -1,7 +1,7 @@
 <?php
 $the_title = 'Confirm Order';
 include('header.php');
-include_once(__DIR__."/../config.php");
+include_once(__DIR__."/config.php");
 if($_GET["isDelivery"] == "true")
     $orderType="Delivery Order";
 else
@@ -32,9 +32,10 @@ $tableNumber = $_GET["tableNum"];
     <input type = "text" name = "city" id="city" value="'.$currentAccount->getCity().'" required>
     <input type = "text" name = "state" id="state" value="'.$currentAccount->getState().'" required>
     <input type = "text" name = "zip" id="zip" value="'.$currentAccount->getZip().'" required>
-    <input type = "text" name = "isDelivery" id="isDelivery" value="'.$orderType.'">
-    <input type = "text" name = "tableNumber" id="tableNumField" value="Table #'.$tableNumber.'">
-    </fieldset>
+    <input type = "text" name = "isDelivery" id="isDelivery" value="'.$orderType.'">';
+    if($_GET['isDelivery'] == 'false'){echo '<input type = "text" name = "tableNumber" id="tableNumField" value="Table #'.$tableNumber.'">';}
+    else {echo '<input type = "hidden" name = "tableNumber" id="tableNumField" value="Table #'.$tableNumber.'">';}
+    echo '</fieldset>
 </form>
 <a href="php_scripts/addOrder.php?isDelivery='.$_GET['isDelivery']."&tableNum=".$_GET['tableNum'].'"><button>Submit</button></a>';
     ?>

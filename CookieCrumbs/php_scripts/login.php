@@ -81,7 +81,13 @@ class login
         </fieldset>
         </form>');
         $_SESSION['accountInformation'] = serialize($accountInformation);
-        header('location:../customer_dashboard.php');
+     
+        if($accountInfo['isManager'] == 1){
+            header('location:../manager_dashboard.php');
+        }
+        else{
+            header('location:../customer_dashboard.php');
+        }
     }
 }
 

@@ -12,11 +12,21 @@
     
         if(empty($currentAccount))
             $personIconDest = 'login_page.php';
+        else if($currentAccount->isManager() == 1)
+            $personIconDest = 'manager_dashboard.php';
         else
             $personIconDest = 'customer_dashboard.php';
+
+        if($currentAccount == null)
+            $cartIconDest = 'login_page.php';
+        else if($currentAccount->isManager() == 1)
+            $cartIconDest = 'manager_cart.php';
+        else
+            $cartIconDest = 'view_cart.php';
+
         $images_array = array(
             array('src' => 'images/profile-pic.png', 'url'=>$personIconDest),
-            array('src' => 'images/cart.png', 'url'=>'view_cart.php')
+            array('src' => 'images/cart.png', 'url'=>$cartIconDest)
         );
         return $dtm->navigation($images_array, $class);
     }
