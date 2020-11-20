@@ -81,7 +81,7 @@ class login
         </fieldset>
         </form>');
         $_SESSION['accountInformation'] = serialize($accountInformation);
-        header('location:../welcome.php');
+        header('location:../customer_dashboard.php');
     }
 }
 

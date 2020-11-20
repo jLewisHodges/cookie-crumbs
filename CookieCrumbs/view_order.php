@@ -9,7 +9,10 @@
     include_once('classes/OrderTicket.php');
 
     $finder = new OrderFinder();
-    $order=$finder->getByOrderNumber($_GET['orderNum']);
+    if(isset($_GET['orderNum']))
+        $order=$finder->getByOrderNumber($_GET['orderNum']);
+    if(($_SERVER["REQUEST_METHOD"] == "POST"))
+        $order=$finder->getByOrderNumber($_REQUEST['orderNum']);
     ?>
     <div class="content">
     <div class="contentMenu">

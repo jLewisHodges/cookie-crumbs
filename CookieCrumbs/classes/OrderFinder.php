@@ -67,11 +67,6 @@ include_once(SITE_ROOT."/classes/Cart.php");
 
         }
 
-        private function createOrderTicket($orderArray)
-        {
-            return new OrderTicket($orderArray['order_number'], $orderArray['user_id'], $orderArray['date_time'], $orderArray['table_number'], $orderArray['item_list'], $orderArray['isDelivery'],  $orderArray['isPaid'], $orderArray['ETA'], $orderArray['sales_credit']);
-        }
-
         /*
             method findAllOrdersByUserId
             retrieves all orders according to the 
@@ -109,5 +104,35 @@ include_once(SITE_ROOT."/classes/Cart.php");
                 }
             }
             return $orderList;
+        }
+
+        public function getLastOrder($id)
+        {
+            $sql = "SELECT * FROM placed_orders WHERE user_id = ".$id." LIMIT 1 ORDER BY date_time DESC";
+            $cart = new Cart();
+            if($result = $this->db->conn->query($sql))
+            {
+                while($orderArray = $result->fetch_assoc())
+                {
+                    $sql2 = "SELECT * FROM order_items WHERE order_id = ".$orderArray['order_id'];
+                    if($itemResult = $this->db->conn->query($sql2))
+                    {
+                        $cartItems = array();
+                        while($itemArray = $itemResult->fetch_assoc())
+                        {
+                            $sql3 = "SELECT * FROM menu_items WHERE item_id = ".$itemArray['item_id'];
+                            if($menuItemResult = $this->db->conn->query($sql3))
+                            {
+                                while($menuItemArray = $menuItemResult->fetch_assoc())
+                                    $menuItem = new MenuItem($menuItemArray['item_id'], $menuItemArray['item_name'], $menuItemArray['item_price'], $menuItemArray['item_description'], $menuItemArray['item_category'], $menuItemArray['item_picture_name'], $menuItemArray['make_time']);
+                                    $cart->addItem($menuItem);
+                            }
+                        }
+                    }
+                    $order = new OrderTicket($orderArray['order_id'], $orderArray['user_id'], $orderArray['table_number'], $cart, $orderArray['isDelivery'], $orderArray['ETA'], $orderArray['sale_amount'], $orderArray['sales_credit'], $orderArray['date_time']);
+                }
+            }
+            return $order;
+
         }
     }

@@ -4,11 +4,9 @@ error_reporting(E_ALL);
 $the_title = 'Create New Account';
 $script = "create_account.js";
 include('header.php');
-
-
-
 ?>
 <div class="content">
+    <div class="contentMenu">
     <h3 id="cAccountTitle">Create your Cookie Crumbs account</h2>
     <form method="post" id="cAccountForm" onsubmit="return validateForm(event)" action="php_scripts/addUser.php">
         <input type = "text"  placeholder = "First Name" id="fname" name = "fname" required>
@@ -84,6 +82,8 @@ include('header.php');
         <input type = "text" name = "zip" id="zip" placeholder="Zip Code" required>
         <input type = "submit" value="Create Account" id="cAccountButton">
     </form>
+    <h3>Already Have an Account?<a href="login_page.php"> Log in</a></h3>
+</div>
 </div>
 <?php
 include('footer.php');

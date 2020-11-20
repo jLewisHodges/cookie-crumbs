@@ -4,8 +4,18 @@ session_start();
 include_once("config.php");
 include_once(SITE_ROOT."/classes/UserAccount.php");
 include_once(SITE_ROOT."/classes/Cart.php");
-$cart = unserialize($_SESSION['cart']);
-$currentAccount = unserialize($_SESSION['currentAccount']);
+if(isset($_SESSION['cart']) && !empty($_SESSION['cart']))
+    $cart = unserialize($_SESSION['cart']);
+if(isset($_SESSION['currentAccount']) && !empty($_SESSION['currentAccount']))
+    $currentAccount = unserialize($_SESSION['currentAccount']);
+else{
+    if(basename($_SERVER['PHP_SELF']) == 'create_account.php' || basename($_SERVER['PHP_SELF']) == 'login_page.php' || basename($_SERVER['PHP_SELF']) == 'logout_page.php')
+    {
+
+    }
+    else
+        header("location: login_page.php");
+}
 include('functions.php'); 
 ?>
 <html>

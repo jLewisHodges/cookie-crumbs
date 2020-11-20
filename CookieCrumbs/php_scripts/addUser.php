@@ -30,7 +30,7 @@ class addUser
 
     public function validateInput()
     {
-        $email = $_REQUEST["email"];
+        $email = $_REQUEST["eaddr"];
         if(!filter_var($email, FILTER_VALIDATE_EMAIL))
             return false;
         $password = $_REQUEST["password"];

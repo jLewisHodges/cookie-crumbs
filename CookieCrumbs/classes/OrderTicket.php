@@ -81,7 +81,7 @@
                 $completionTime = "Completed at ".date("g:i a",strtotime("+".$this->estimatedCompletionTime." minutes",strtotime($this->time)));
             }
             
-            return "<a href=\"view_order.php?orderNum=".$this->orderNum."\"><div class=\"menuItem\"id=\"menuItem\"".$this->orderNum."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$orderImage."\"></div>\n<div id=\"column\"><h4>Placed on: ".date_format(date_create($this->date), "m/d/Y")."</h4><p></p>\n<h4>at ".date("g:i a",strtotime($this->time))."</h4><p></p>\n<h4>".$completionTime."</h6></div>\n<div id=\"column\"><h3>Total: $".$this->totalPrice."</h3></div>\n</div>";
+            return "<a href=\"view_order.php?orderNum=".$this->orderNum."\"><div class=\"menuItem\"id=\"menuItem\"".$this->orderNum."\"><div id=\"column\">\n<img height=\"100px\" width=auto src=\"images/".$orderImage."\"></div>\n<div id=\"column\"><h4>Placed on: ".date_format(date_create($this->date), "m/d/Y")."</h4><p></p>\n<h4>at ".date("g:i a",strtotime($this->time))."</h4><p></p>\n<h4>".$completionTime."</h6></div>\n<div id=\"column\"><h3>Total: $".$this->totalPrice."</h3></div>\n</div></a>";
         }
 
         public function getFullHTML()
