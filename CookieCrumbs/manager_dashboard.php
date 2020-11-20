@@ -16,6 +16,10 @@ $totalSales = new totalSales();
 <div class="centered">
     <input type="button" onclick="location.href='edit_menu.php';" value="Edit Menu"  class="managerDashButton"/>
 </div>
+<br>
+<div class="centered">
+    <input type="button" onclick="location.href='manager_orders.php';" value="View Current Orders"  class="managerDashButton"/>
+</div>
 
 <?php
 include('footer.php');?>
