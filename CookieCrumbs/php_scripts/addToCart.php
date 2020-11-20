@@ -3,12 +3,17 @@ session_start();
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 include_once(__DIR__."/../config.php");
+include_once(SITE_ROOT."/classes/UserAccount.php");
 include_once(SITE_ROOT."/classes/Cart.php");
 include_once(SITE_ROOT. "/classes/MenuServices.php");
 $cart = unserialize($_SESSION['cart']);
 $addToCart = new addToCart();
 $cart = $addToCart->add_item($cart);
 $_SESSION['cart'] = serialize($cart);
+$currentAccount = unserialize($_SESSION['currentAccount']);
+if($currentAccount->isManager()==1)
+header("location: ../manager_cart.php");
+else
 header("location: ../view_cart.php");
 
     class addToCart
